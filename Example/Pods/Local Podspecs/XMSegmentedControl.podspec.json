@@ -1,0 +1,25 @@
+{
+  "name": "XMSegmentedControl",
+  "version": "0.1.0",
+  "summary": "A short description of XMSegmentedControl.",
+  "description": "",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/XMSegmentedControl",
+  "license": "MIT",
+  "authors": {
+    "xaviermerino": "xaviermerino@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/XMSegmentedControl.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "requires_arc": true,
+  "source_files": "Pod/Classes/**/*",
+  "resource_bundles": {
+    "XMSegmentedControl": [
+      "Pod/Assets/*.png"
+    ]
+  }
+}

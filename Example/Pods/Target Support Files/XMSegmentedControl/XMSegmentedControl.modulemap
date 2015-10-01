@@ -1,0 +1,6 @@
+framework module XMSegmentedControl {
+  umbrella header "XMSegmentedControl-umbrella.h"
+
+  export *
+  module * { export * }
+}

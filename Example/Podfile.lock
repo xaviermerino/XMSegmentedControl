@@ -1,0 +1,14 @@
+PODS:
+  - XMSegmentedControl (0.1.0)
+
+DEPENDENCIES:
+  - XMSegmentedControl (from `../`)
+
+EXTERNAL SOURCES:
+  XMSegmentedControl:
+    :path: ../
+
+SPEC CHECKSUMS:
+  XMSegmentedControl: bd58e72fe4d4d37bbd786e8783d966d925466753
+
+COCOAPODS: 0.38.2

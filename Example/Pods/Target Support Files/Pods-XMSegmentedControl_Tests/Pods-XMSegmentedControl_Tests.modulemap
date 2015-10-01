@@ -1,0 +1,6 @@
+framework module Pods_XMSegmentedControl_Tests {
+  umbrella header "Pods-XMSegmentedControl_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
