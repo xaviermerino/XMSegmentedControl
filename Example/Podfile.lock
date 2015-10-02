@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  XMSegmentedControl: bd58e72fe4d4d37bbd786e8783d966d925466753
+  XMSegmentedControl: 3e291ed805c8bea98bbdf7269a7bef8c4330a834
 
 COCOAPODS: 0.38.2

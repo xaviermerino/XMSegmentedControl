@@ -3,7 +3,7 @@ This application makes use of the following third party libraries:
 
 ## XMSegmentedControl
 
-Copyright (c) 2015 xaviermerino <xaviermerino@gmail.com>
+Copyright (c) 2015 Xavier Merino <xaviermerino@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

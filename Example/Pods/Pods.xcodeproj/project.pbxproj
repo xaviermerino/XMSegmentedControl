@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2477018F4ECF72E984106CB3187D9018 /* Pods-XMSegmentedControl_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 90314A2BCFE578149030608BABC13179 /* Pods-XMSegmentedControl_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2978E8C0691473308572A5BEFADCDA09 /* XMSegmentedControl-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E4BEBA5A3E28241FE8536D551B15FB2F /* XMSegmentedControl-dummy.m */; };
+		47EF90A2956CA921F50108503A0D7659 /* XMSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B4B568E0E4F27365CA127193A45BC0 /* XMSegmentedControl.swift */; };
 		4CABAFD5BF0D535F8775CC7B9584A577 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0527766346ABBF28CCB16914B83A8492 /* Foundation.framework */; };
 		4DCF23BC4545CC5EE652F516C7A77A3F /* Pods-XMSegmentedControl_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A0057533E03EC03897205C24DA0708 /* Pods-XMSegmentedControl_Tests-dummy.m */; };
 		637794CC5EC94FD2FB0871DFB29FD684 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0527766346ABBF28CCB16914B83A8492 /* Foundation.framework */; };
@@ -16,31 +16,31 @@
 		85AFE5E1C2AA965128FD45CF934D57DE /* Pods-XMSegmentedControl_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 650252E8AF8355815A7A8163F5C781E3 /* Pods-XMSegmentedControl_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D102A0480C053CE19457DFD24014F9F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0527766346ABBF28CCB16914B83A8492 /* Foundation.framework */; };
 		D22182FAF40519F2CFB94B650CD59E5B /* Pods-XMSegmentedControl_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A4CBDD53193FA1689E32641C25B1108 /* Pods-XMSegmentedControl_Example-dummy.m */; };
-		DDCEABE4B936D77E065D126C2C2382CD /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = C254B44EE0EC9020737DD45C980ADA99 /* ReplaceMe.swift */; };
 		E72B6A61F309B8B0073D6B46F03F8C47 /* XMSegmentedControl.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 62C7A9B0885E5B00D2FCF4A2137DD26C /* XMSegmentedControl.bundle */; };
+		F7CD11F9DB2EF4ED72FF5C962960BC4A /* XMSegmentedControl-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E95BEE585C0370F969D7ACC439F4B830 /* XMSegmentedControl-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		214CEFBA74EA85BB961E9048A24833F2 /* PBXContainerItemProxy */ = {
+		8C5BD7CFC08FF1799A79BA1E1B0E4F1E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D5066DD063CF59AFBD450F5E2FDEEFF6;
+			remoteInfo = XMSegmentedControl;
+		};
+		96A187180D0A73A8FAD753F4F9A50AD0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D5066DD063CF59AFBD450F5E2FDEEFF6;
+			remoteInfo = XMSegmentedControl;
+		};
+		CFF698435089F4B02573565EADF77429 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = DF5C3949B1A921A6B7F8732D78F10000;
 			remoteInfo = "XMSegmentedControl-XMSegmentedControl";
-		};
-		A5CCBC4911DCD560B51FBC929A963440 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D5066DD063CF59AFBD450F5E2FDEEFF6;
-			remoteInfo = XMSegmentedControl;
-		};
-		B2D7BC45875E70C4A44AB8FA117AD81A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D5066DD063CF59AFBD450F5E2FDEEFF6;
-			remoteInfo = XMSegmentedControl;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -71,13 +71,13 @@
 		9B0BEDC2DA143B7038A18D6798D705CA /* XMSegmentedControl-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "XMSegmentedControl-Private.xcconfig"; sourceTree = "<group>"; };
 		B9EBB19E3F0039B3D70013E72B9F50B1 /* Pods-XMSegmentedControl_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-XMSegmentedControl_Example.release.xcconfig"; sourceTree = "<group>"; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		C254B44EE0EC9020737DD45C980ADA99 /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ReplaceMe.swift; sourceTree = "<group>"; };
 		C5831402C7332603EEB41E58EA9E4C05 /* Pods-XMSegmentedControl_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-XMSegmentedControl_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		C8608CA09C634CC7BFF81B81B67EB1D6 /* Pods-XMSegmentedControl_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-XMSegmentedControl_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		CD14D7BF98C4FE065620F69FCEBD1501 /* Pods_XMSegmentedControl_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XMSegmentedControl_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF93C3C5B467D8BDD5F7F43AA9E6E9CB /* XMSegmentedControl.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = XMSegmentedControl.modulemap; sourceTree = "<group>"; };
 		DDA4364E7F58549696D9FF9C0E8C4563 /* XMSegmentedControl.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = XMSegmentedControl.xcconfig; sourceTree = "<group>"; };
-		E4BEBA5A3E28241FE8536D551B15FB2F /* XMSegmentedControl-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "XMSegmentedControl-dummy.m"; sourceTree = "<group>"; };
+		E8B4B568E0E4F27365CA127193A45BC0 /* XMSegmentedControl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = XMSegmentedControl.swift; sourceTree = "<group>"; };
+		E95BEE585C0370F969D7ACC439F4B830 /* XMSegmentedControl-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "XMSegmentedControl-dummy.m"; sourceTree = "<group>"; };
 		EC591323CC7FEC65F9A047D98E0F74A6 /* Pods-XMSegmentedControl_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-XMSegmentedControl_Example.modulemap"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,7 +129,7 @@
 		1D844A19A7DD73A6B6D75C80DAE4374B /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				C748AD1E44554750CFE9B3F0D00237C8 /* Classes */,
+				CAAD7EBC23C204CCC55413AE57A675EB /* Classes */,
 			);
 			path = Pod;
 			sourceTree = "<group>";
@@ -188,10 +188,10 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C748AD1E44554750CFE9B3F0D00237C8 /* Classes */ = {
+		CAAD7EBC23C204CCC55413AE57A675EB /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				C254B44EE0EC9020737DD45C980ADA99 /* ReplaceMe.swift */,
+				E8B4B568E0E4F27365CA127193A45BC0 /* XMSegmentedControl.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -232,7 +232,7 @@
 				CF93C3C5B467D8BDD5F7F43AA9E6E9CB /* XMSegmentedControl.modulemap */,
 				DDA4364E7F58549696D9FF9C0E8C4563 /* XMSegmentedControl.xcconfig */,
 				9B0BEDC2DA143B7038A18D6798D705CA /* XMSegmentedControl-Private.xcconfig */,
-				E4BEBA5A3E28241FE8536D551B15FB2F /* XMSegmentedControl-dummy.m */,
+				E95BEE585C0370F969D7ACC439F4B830 /* XMSegmentedControl-dummy.m */,
 				0CDB3C43824266D6BED02C392BECC23B /* XMSegmentedControl-prefix.pch */,
 				76C825342FB06B4B8687DBD31566AD41 /* XMSegmentedControl-umbrella.h */,
 			);
@@ -289,7 +289,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				166751FE2EC112DB0CB5D2241926431D /* PBXTargetDependency */,
+				9EC55E7D78575CE84D9DB5F35DEDE1F0 /* PBXTargetDependency */,
 			);
 			name = "Pods-XMSegmentedControl_Tests";
 			productName = "Pods-XMSegmentedControl_Tests";
@@ -307,7 +307,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				C4BE538332A0FAB72202476E3BC6C8F8 /* PBXTargetDependency */,
+				A1C4565A06B4FBC65A75D8D0B466DF1B /* PBXTargetDependency */,
 			);
 			name = "Pods-XMSegmentedControl_Example";
 			productName = "Pods-XMSegmentedControl_Example";
@@ -318,7 +318,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F286C80E1FD992D00019F4218BADB604 /* Build configuration list for PBXNativeTarget "XMSegmentedControl" */;
 			buildPhases = (
-				A0E5715E82842D375F2A2DD05510D42F /* Sources */,
+				B994E9C5A5270D9C823E5436CEE3F32F /* Sources */,
 				9340E86ACABDB4194FA97BBD6A066FFC /* Frameworks */,
 				2F26B0E431F17F00E30A40359198DA03 /* Resources */,
 				0C57B32BE68BB83D7D0B65179D365F77 /* Headers */,
@@ -326,7 +326,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				786E730DEC2610C813C839F213AD5EB8 /* PBXTargetDependency */,
+				A0C9413DCCB1095224B6C188CB2992D9 /* PBXTargetDependency */,
 			);
 			name = XMSegmentedControl;
 			productName = XMSegmentedControl;
@@ -421,35 +421,35 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A0E5715E82842D375F2A2DD05510D42F /* Sources */ = {
+		B994E9C5A5270D9C823E5436CEE3F32F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDCEABE4B936D77E065D126C2C2382CD /* ReplaceMe.swift in Sources */,
-				2978E8C0691473308572A5BEFADCDA09 /* XMSegmentedControl-dummy.m in Sources */,
+				F7CD11F9DB2EF4ED72FF5C962960BC4A /* XMSegmentedControl-dummy.m in Sources */,
+				47EF90A2956CA921F50108503A0D7659 /* XMSegmentedControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		166751FE2EC112DB0CB5D2241926431D /* PBXTargetDependency */ = {
+		9EC55E7D78575CE84D9DB5F35DEDE1F0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = XMSegmentedControl;
 			target = D5066DD063CF59AFBD450F5E2FDEEFF6 /* XMSegmentedControl */;
-			targetProxy = B2D7BC45875E70C4A44AB8FA117AD81A /* PBXContainerItemProxy */;
+			targetProxy = 8C5BD7CFC08FF1799A79BA1E1B0E4F1E /* PBXContainerItemProxy */;
 		};
-		786E730DEC2610C813C839F213AD5EB8 /* PBXTargetDependency */ = {
+		A0C9413DCCB1095224B6C188CB2992D9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "XMSegmentedControl-XMSegmentedControl";
 			target = DF5C3949B1A921A6B7F8732D78F10000 /* XMSegmentedControl-XMSegmentedControl */;
-			targetProxy = 214CEFBA74EA85BB961E9048A24833F2 /* PBXContainerItemProxy */;
+			targetProxy = CFF698435089F4B02573565EADF77429 /* PBXContainerItemProxy */;
 		};
-		C4BE538332A0FAB72202476E3BC6C8F8 /* PBXTargetDependency */ = {
+		A1C4565A06B4FBC65A75D8D0B466DF1B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = XMSegmentedControl;
 			target = D5066DD063CF59AFBD450F5E2FDEEFF6 /* XMSegmentedControl */;
-			targetProxy = A5CCBC4911DCD560B51FBC929A963440 /* PBXContainerItemProxy */;
+			targetProxy = 96A187180D0A73A8FAD753F4F9A50AD0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
