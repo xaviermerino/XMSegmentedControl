@@ -1,13 +1,14 @@
 # XMSegmentedControl
 
-[![CI Status](http://img.shields.io/travis/xaviermerino/XMSegmentedControl.svg?style=flat)](https://travis-ci.org/xaviermerino/XMSegmentedControl)
 [![Version](https://img.shields.io/cocoapods/v/XMSegmentedControl.svg?style=flat)](http://cocoapods.org/pods/XMSegmentedControl)
 [![License](https://img.shields.io/cocoapods/l/XMSegmentedControl.svg?style=flat)](http://cocoapods.org/pods/XMSegmentedControl)
 [![Platform](https://img.shields.io/cocoapods/p/XMSegmentedControl.svg?style=flat)](http://cocoapods.org/pods/XMSegmentedControl)
 
 ## Overview
 
-XMSegmentedControl is a customizable segmented control. It allows using Text or Icons/Images as the segments.
+XMSegmentedControl is a customizable segmented control. It allows using Text, Icons, or a combination of Icons and Text as the segments.
+
+![Screenshot](https://dl.dropboxusercontent.com/u/72507896/XMSegmentedControlScreenshots/screenshot1.png)
 
 ## Requirements
 
@@ -35,8 +36,6 @@ import XMSegmentedControl
 
 Alternatively, create a XMSegmentedControl from code.
 
-* Conform to the `XMSegmentedControlDelegate` protocol by implementing `func xmSegmentedControl(xmSegmentedControl: XMSegmentedControl, selectedSegment: Int)` to receive notifications on which segment was selected.
-
 ```Swift
 let backgroundColor = UIColor(red: 205/255, green: 74/255, blue: 1/255, alpha: 1)
 let highlightColor = UIColor(red: 226/255, green: 114/255, blue: 31/255, alpha: 1)
@@ -49,15 +48,23 @@ let segmentedControl2 = XMSegmentedControl(frame: frame, segmentTitle: titles, s
 segmentedControl2.backgroundColor = backgroundColor
 segmentedControl2.highlightColor = highlightColor
 segmentedControl2.tint = UIColor.whiteColor()
+segmentedControl.delegate = self
 
 self.view.addSubview(segmentedControl2)
 ```
+* Conform to the `XMSegmentedControlDelegate` protocol by implementing `func xmSegmentedControl(xmSegmentedControl: XMSegmentedControl, selectedSegment: Int)` to receive notifications on which segment was selected.
 
+```Swift
+func xmSegmentedControl(xmSegmentedControl: XMSegmentedControl, selectedSegment: Int) {
+print("SegmentedControl Selected Segment: \(selectedSegment)")
+}
+```
 For more examples see the Example Project provided.
 
 ## Example Project
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
+Icons in the example project are provided by icons8.com
 
 ## Author
 

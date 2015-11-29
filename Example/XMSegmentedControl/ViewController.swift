@@ -35,14 +35,15 @@ class ViewController: UIViewController, XMSegmentedControlDelegate {
         let highlightColor = UIColor(red: 226/255, green: 114/255, blue: 31/255, alpha: 1)
         
         let titles = ["Hello", "World", "Two"]
+        let icons = [UIImage(named: "icon1")!, UIImage(named: "icon2")!, UIImage(named: "icon3")!]
         
         let frame = CGRect(x: 0, y: 114, width: self.view.frame.width, height: 44)
         
-        let segmentedControl2 = XMSegmentedControl(frame: frame, segmentTitle: titles, selectedItemHighlightStyle: .BottomEdge)
-        
+        let segmentedControl2 = XMSegmentedControl(frame: frame, segmentContent: (titles, icons), selectedItemHighlightStyle: XMSelectedItemHighlightStyle.BottomEdge)
         segmentedControl2.backgroundColor = backgroundColor
         segmentedControl2.highlightColor = highlightColor
         segmentedControl2.tint = UIColor.whiteColor()
+        segmentedControl2.highlightTint = UIColor.blackColor()
         
         self.view.addSubview(segmentedControl2)
         

@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A789FCA18F05D27B01AB6A7 /* Pods_XMSegmentedControl_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19ABD2CEA41BD1DC63B4036A /* Pods_XMSegmentedControl_Example.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		581D5851FC91AE2B2BF2A541 /* Pods_XMSegmentedControl_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8799F6D568A188459790D9F3 /* Pods_XMSegmentedControl_Tests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		2500FAB01C0A59C400984852 /* CHANGELOG.md in Sources */ = {isa = PBXBuildFile; fileRef = 2500FAAF1C0A59C400984852 /* CHANGELOG.md */; };
+		3A789FCA18F05D27B01AB6A7 /* Pods_XMSegmentedControl_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19ABD2CEA41BD1DC63B4036A /* Pods_XMSegmentedControl_Example.framework */; };
+		581D5851FC91AE2B2BF2A541 /* Pods_XMSegmentedControl_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8799F6D568A188459790D9F3 /* Pods_XMSegmentedControl_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		19ABD2CEA41BD1DC63B4036A /* Pods_XMSegmentedControl_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XMSegmentedControl_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2500FAAF1C0A59C400984852 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		2FC7E6F5C75A0B71C796A9A5 /* Pods-XMSegmentedControl_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XMSegmentedControl_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XMSegmentedControl_Tests/Pods-XMSegmentedControl_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* XMSegmentedControl_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XMSegmentedControl_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				E4199E1AEE132110B80FFF46 /* XMSegmentedControl.podspec */,
 				806D51BEF2495D059BB5A066 /* README.md */,
 				D7089798923D165D5C9EA123 /* LICENSE */,
+				2500FAAF1C0A59C400984852 /* CHANGELOG.md */,
 			);
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				2500FAB01C0A59C400984852 /* CHANGELOG.md in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -422,7 +426,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_BITCODE = YES;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -468,7 +472,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_BITCODE = YES;
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
