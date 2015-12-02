@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "XMSegmentedControl"
-  s.version          = "0.1.3"
+  s.version          = "0.1.4"
   s.summary          = "A customizable segmented control with Icons, Text or Icons + Text segments."
 
 # This description is used to generate tags and improve search results.
