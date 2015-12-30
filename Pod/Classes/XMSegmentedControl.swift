@@ -236,6 +236,10 @@ public class XMSegmentedControl: UIView {
         (self.subviews as [UIView]).forEach { $0.removeFromSuperview() }
         let totalWidth = self.frame.width
         
+        if segmentTitle.count == 0 {
+            return
+        }
+        
         if contentType == .Text {
             let tabBarSections:Int = segmentTitle.count
             let sectionWidth = totalWidth / CGFloat(tabBarSections)
