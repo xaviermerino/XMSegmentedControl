@@ -252,7 +252,6 @@ public class XMSegmentedControl: UIView {
                     tab.titleLabel?.font = font
                     tab.imageView?.contentMode = .ScaleAspectFit
                     tab.tintColor = i == selectedSegment ? highlightTint : tint
-
                 case .HybridVertical:
                     let insetAmount: CGFloat = 8 / 2.0
                     let bottomTitleInset: CGFloat = 20
