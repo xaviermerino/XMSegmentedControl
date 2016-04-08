@@ -254,8 +254,10 @@ public class XMSegmentedControl: UIView {
                     tab.tintColor = i == selectedSegment ? highlightTint : tint
                 case .HybridVertical:
                     let insetAmount: CGFloat = 8 / 2.0
-                    tab.imageEdgeInsets = UIEdgeInsetsMake(insetAmount / 2.0, width - insetAmount*2, 16, width - insetAmount)
-                    tab.titleEdgeInsets = UIEdgeInsetsMake(height - insetAmount*2, -12, insetAmount*2, 12)
+                    let bottomImageInset: CGFloat = 20
+                    let bottomTitleInset: CGFloat = bottomImageInset
+                    tab.imageEdgeInsets = UIEdgeInsetsMake(insetAmount, width - insetAmount*2, bottomImageInset, width - insetAmount)
+                    tab.titleEdgeInsets = UIEdgeInsetsMake(height - bottomTitleInset, -12, insetAmount*2, 12)
                     tab.contentEdgeInsets = UIEdgeInsetsMake(0, insetAmount, 0, insetAmount)
                     tab.contentHorizontalAlignment = .Center
                     tab.setTitle(segmentContent.text[i], forState: .Normal)
