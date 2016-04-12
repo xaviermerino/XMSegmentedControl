@@ -252,16 +252,20 @@ public class XMSegmentedControl: UIView {
                     tab.titleLabel?.font = font
                     tab.imageView?.contentMode = .ScaleAspectFit
                     tab.tintColor = i == selectedSegment ? highlightTint : tint
+
                 case .HybridVertical:
                     let insetAmount: CGFloat = 8 / 2.0
-                    let bottomImageInset: CGFloat = 20
-                    let bottomTitleInset: CGFloat = bottomImageInset
-                    tab.imageEdgeInsets = UIEdgeInsetsMake(insetAmount, width - insetAmount*2, bottomImageInset, width - insetAmount)
-                    tab.titleEdgeInsets = UIEdgeInsetsMake(height - bottomTitleInset, -12, insetAmount*2, 12)
+                    let bottomTitleInset: CGFloat = 20
+
+                    let image: UIImage = segmentContent.icon[i]
+                    let imageSize = image.size
+
+                    tab.imageEdgeInsets = UIEdgeInsetsMake(insetAmount, (width - imageSize.width)/2, height - (imageSize.height + insetAmount), (width - imageSize.width)/2)
+                    tab.titleEdgeInsets = UIEdgeInsetsMake(height - bottomTitleInset, -10, insetAmount*2, 10)
                     tab.contentEdgeInsets = UIEdgeInsetsMake(0, insetAmount, 0, insetAmount)
                     tab.contentHorizontalAlignment = .Center
                     tab.setTitle(segmentContent.text[i], forState: .Normal)
-                    tab.setImage(segmentContent.icon[i], forState: .Normal)
+                    tab.setImage(image, forState: .Normal)
                     tab.titleLabel?.font = UIFont(name: font.fontName, size: font.pointSize / 2.0)
                     tab.imageView?.contentMode = .ScaleAspectFit
                     tab.tintColor = i == selectedSegment ? highlightTint : tint
@@ -353,8 +357,10 @@ public class XMSegmentedControl: UIView {
     }
     
     /// Scales an Image to the size provided. It takes into account alpha. And it uses the screen's scale to resize.
-    private func resizeImage(image: UIImage) -> UIImage {
-        let size = CGSize(width: 20, height: 20)
+    private func resizeImage(image:UIImage) -> UIImage {
+        let maxSize = CGSize(width: 20.0, height: 20.0)
+        let ratio = image.size.width / image.size.height
+        let size = CGSize(width: maxSize.width*ratio, height: maxSize.height)
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
         image.drawInRect(CGRect(origin: CGPointZero, size: size))
         let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
