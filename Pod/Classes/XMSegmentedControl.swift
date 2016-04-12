@@ -259,9 +259,10 @@ public class XMSegmentedControl: UIView {
 
                     let image: UIImage = segmentContent.icon[i]
                     let imageSize = image.size
+                    let horizontalInset = (width - imageSize.width)/2
 
-                    tab.imageEdgeInsets = UIEdgeInsetsMake(insetAmount, (width - imageSize.width)/2, height - (imageSize.height + insetAmount), (width - imageSize.width)/2)
-                    tab.titleEdgeInsets = UIEdgeInsetsMake(height - bottomTitleInset, -10, insetAmount*2, 10)
+                    tab.imageEdgeInsets = UIEdgeInsetsMake(insetAmount, horizontalInset, height - imageSize.height + insetAmount, horizontalInset)
+                    tab.titleEdgeInsets = UIEdgeInsetsMake(height - bottomTitleInset, -imageSize.width / 2, insetAmount*2, imageSize.width / 2)
                     tab.contentEdgeInsets = UIEdgeInsetsMake(0, insetAmount, 0, insetAmount)
                     tab.contentHorizontalAlignment = .Center
                     tab.setTitle(segmentContent.text[i], forState: .Normal)
@@ -358,7 +359,7 @@ public class XMSegmentedControl: UIView {
     
     /// Scales an Image to the size provided. It takes into account alpha. And it uses the screen's scale to resize.
     private func resizeImage(image:UIImage) -> UIImage {
-        let maxSize = CGSize(width: 20.0, height: 20.0)
+        let maxSize = CGSize(width: frame.height / 2, height: frame.height / 2)
         let ratio = image.size.width / image.size.height
         let size = CGSize(width: maxSize.width*ratio, height: maxSize.height)
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
