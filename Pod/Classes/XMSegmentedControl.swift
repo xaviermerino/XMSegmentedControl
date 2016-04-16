@@ -261,7 +261,7 @@ public class XMSegmentedControl: UIView {
                     let imageSize = image.size
                     let horizontalInset = (width - imageSize.width)/2
 
-                    tab.imageEdgeInsets = UIEdgeInsetsMake(insetAmount, horizontalInset, height - imageSize.height + insetAmount, horizontalInset)
+                    tab.imageEdgeInsets = UIEdgeInsetsMake(insetAmount*2, horizontalInset, height - imageSize.height + insetAmount, horizontalInset)
                     tab.titleEdgeInsets = UIEdgeInsetsMake(height - bottomTitleInset, -imageSize.width / 2, insetAmount*2, imageSize.width / 2)
                     tab.contentEdgeInsets = UIEdgeInsetsMake(0, insetAmount, 0, insetAmount)
                     tab.contentHorizontalAlignment = .Center
