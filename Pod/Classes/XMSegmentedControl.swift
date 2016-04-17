@@ -109,15 +109,17 @@ public class XMSegmentedControl: UIView {
 
             if segmentContent.text.count > 6 {
                 segmentContent.text = Array(segmentContent.text[0..<6])
+            } else {
+                segmentContent.text = segmentContent.text
             }
 
             if segmentContent.icon.count > 6 {
                 segmentContent.icon = Array(segmentContent.icon[0..<6])
+            } else {
+                segmentContent.icon = segmentContent.icon
             }
 
-            if segmentContent.icon.count > 6 {
-                segmentContent.icon = Array(segmentContent.icon[0..<6])
-            }
+            segmentContent.icon = segmentContent.icon.map(resizeImage)
 
             contentType = .Hybrid
             self.update()
@@ -251,12 +253,13 @@ public class XMSegmentedControl: UIView {
         
         (subviews as [UIView]).forEach { $0.removeFromSuperview() }
         let totalWidth = frame.width
-        
-        if segmentTitle.count == 0 {
-            return
-        }
-        
+
         if contentType == .Text {
+            guard segmentTitle.count > 0 else {
+                print("segment titles (segmentTitle) are not set")
+                return
+            }
+
             let tabBarSections = segmentTitle.count
             let sectionWidth = totalWidth / CGFloat(tabBarSections)
             addHighlightView(startingPosition: CGFloat(selectedSegment) * sectionWidth, width: sectionWidth)
