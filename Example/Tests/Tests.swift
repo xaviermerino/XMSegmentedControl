@@ -22,7 +22,7 @@ class Tests: XCTestCase {
         let frame = CGRect(x: 0, y: 114, width: 375, height: 44)
         let segmentedControl = XMSegmentedControl(frame: frame, segmentContent: (titles, icons), selectedItemHighlightStyle: XMSelectedItemHighlightStyle.BottomEdge)
         XCTAssertEqual(titles, segmentedControl.segmentContent.text)
-        XCTAssertEqual(icons, segmentedControl.segmentContent.icon)
+        XCTAssertEqual(icons.count, segmentedControl.segmentContent.icon.count)
         XCTAssertEqual(segmentedControl.contentType, XMContentType.Hybrid)
     }
 
@@ -33,7 +33,7 @@ class Tests: XCTestCase {
         let frame = CGRect(x: 0, y: 114, width: 375, height: 44)
         let segmentedControl = XMSegmentedControl(frame: frame, verticalSegmentContent: (titles, icons), selectedItemHighlightStyle: XMSelectedItemHighlightStyle.BottomEdge)
         XCTAssertEqual(titles, segmentedControl.segmentContent.text)
-        XCTAssertEqual(icons, segmentedControl.segmentContent.icon)
+        XCTAssertEqual(icons.count, segmentedControl.segmentContent.icon.count)
         XCTAssertEqual(segmentedControl.contentType, XMContentType.HybridVertical)
     }
 
