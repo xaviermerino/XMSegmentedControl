@@ -241,7 +241,7 @@ public class XMSegmentedControl: UIView {
     /// Forces the segmented control to reload.
     public func update() {
         func addSegments(startingPosition starting: CGFloat, sections: Int, width: CGFloat, height: CGFloat) {
-            for var i in 0..<sections {
+            for i in 0..<sections {
                 let frame = CGRect(x: starting + (CGFloat(i) * width), y: 0, width: width, height: height)
                 let tab = UIButton(type: UIButtonType.System)
                 tab.frame = frame
@@ -275,11 +275,12 @@ public class XMSegmentedControl: UIView {
                     let halfSizeFont = UIFont(name: font.fontName, size: font.pointSize / 2.0)
                     let textSize = NSString(string: text).sizeWithAttributes([NSFontAttributeName: halfSizeFont!])
 
-                    let spacing: CGFloat = 10
+                    let spacing: CGFloat = 12
+                    let insetAmount: CGFloat = 8 / 2.0
                     let imageHorizontalInset: CGFloat = (width - imageSize.width)/2
 
                     tab.imageEdgeInsets = UIEdgeInsetsMake(spacing, imageHorizontalInset, spacing + textSize.height + edgeHighlightHeight, imageHorizontalInset)
-                    tab.titleEdgeInsets = UIEdgeInsetsMake(0, -imageSize.width, -imageSize.height + spacing, 0)
+                    tab.titleEdgeInsets = UIEdgeInsetsMake(insetAmount, -imageSize.width, -imageSize.height + spacing, 0)
                     tab.contentEdgeInsets = UIEdgeInsetsZero
                     tab.contentHorizontalAlignment = .Center
                     tab.contentVerticalAlignment = .Center
