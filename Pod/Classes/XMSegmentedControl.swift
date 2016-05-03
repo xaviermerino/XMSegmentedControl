@@ -272,8 +272,7 @@ open class XMSegmentedControl: UIView {
     /// Forces the segmented control to reload.
     open func update() {
         func addSegments(startingPosition starting: CGFloat, sections: Int, width: CGFloat, height: CGFloat) {
-
-            for i in 0 ..< sections {
+            for var i in 0..<sections {
                 let frame = CGRect(x: starting + (CGFloat(i) * width), y: 0, width: width, height: height)
                 let tab = UIButton(type: UIButtonType.system)
                 tab.frame = frame
