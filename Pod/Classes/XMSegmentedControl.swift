@@ -300,21 +300,27 @@ open class XMSegmentedControl: UIView {
                     tab.imageView?.contentMode = .scaleAspectFit
                     tab.tintColor = i == selectedSegment ? highlightTint : tint
                 case .hybridVertical:
-                    let insetAmount: CGFloat = 8 / 2.0
-                    let bottomTitleInset: CGFloat = 20
-
                     let image: UIImage = segmentContent.icon[i]
                     let imageSize = image.size
-                    let horizontalInset = (width - imageSize.width)/2
+                    let text: String = segmentContent.text[i]
 
-                    tab.imageEdgeInsets = UIEdgeInsetsMake(insetAmount*2, horizontalInset, height - imageSize.height + insetAmount, horizontalInset)
-                    tab.titleEdgeInsets = UIEdgeInsetsMake(height - bottomTitleInset, -imageSize.width / 2, insetAmount*2, imageSize.width / 2)
-                    tab.contentEdgeInsets = UIEdgeInsetsMake(0, insetAmount, 0, insetAmount)
-                    tab.contentHorizontalAlignment = .center
-                    tab.setTitle(segmentContent.text[i], for: UIControlState())
-                    tab.setImage(image, for: UIControlState())
-                    tab.titleLabel?.font = UIFont(name: font.fontName, size: font.pointSize / 2.0)
-                    tab.imageView?.contentMode = .scaleAspectFit
+                    let halfSizeFont = UIFont(name: font.fontName, size: font.pointSize / 2.0)
+                    let textSize = NSString(string: text).sizeWithAttributes([NSFontAttributeName: halfSizeFont!])
+
+                    let spacing: CGFloat = 10
+                    let imageHorizontalInset: CGFloat = (width - imageSize.width)/2
+
+                    tab.imageEdgeInsets = UIEdgeInsetsMake(spacing, imageHorizontalInset, spacing + textSize.height + edgeHighlightHeight, imageHorizontalInset)
+                    tab.titleEdgeInsets = UIEdgeInsetsMake(0, -imageSize.width, -imageSize.height + spacing, 0)
+                    tab.contentEdgeInsets = UIEdgeInsetsZero
+                    tab.contentHorizontalAlignment = .Center
+                    tab.contentVerticalAlignment = .Center
+                    tab.setTitle(text, forState: .Normal)
+                    tab.setImage(image, forState: .Normal)
+                    tab.titleLabel?.font = halfSizeFont
+                    tab.titleLabel?.textAlignment = .Center
+                    tab.titleLabel?.numberOfLines = 0
+                    tab.imageView?.contentMode = .ScaleAspectFit
                     tab.tintColor = i == selectedSegment ? highlightTint : tint
                 }
                 
