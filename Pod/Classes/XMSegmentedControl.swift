@@ -241,7 +241,7 @@ public class XMSegmentedControl: UIView {
     /// Forces the segmented control to reload.
     public func update() {
         func addSegments(startingPosition starting: CGFloat, sections: Int, width: CGFloat, height: CGFloat) {
-            for (var i = 0; i < sections; i++) {
+            for var i in 0..<sections {
                 let frame = CGRect(x: starting + (CGFloat(i) * width), y: 0, width: width, height: height)
                 let tab = UIButton(type: UIButtonType.System)
                 tab.frame = frame
@@ -293,7 +293,7 @@ public class XMSegmentedControl: UIView {
                 }
                 
                 tab.tag = i
-                tab.addTarget(self, action: "segmentPressed:", forControlEvents: .TouchUpInside)
+                tab.addTarget(self, action: #selector(segmentPressed), forControlEvents: .TouchUpInside)
                 self.addSubview(tab)
             }
         }
