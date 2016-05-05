@@ -276,11 +276,10 @@ public class XMSegmentedControl: UIView {
                     let textSize = NSString(string: text).sizeWithAttributes([NSFontAttributeName: halfSizeFont!])
 
                     let spacing: CGFloat = 12
-                    let insetAmount: CGFloat = 8 / 2.0
                     let imageHorizontalInset: CGFloat = (width - imageSize.width)/2
 
                     tab.imageEdgeInsets = UIEdgeInsetsMake(spacing, imageHorizontalInset, spacing + textSize.height + edgeHighlightHeight, imageHorizontalInset)
-                    tab.titleEdgeInsets = UIEdgeInsetsMake(insetAmount, -imageSize.width, -imageSize.height + spacing, 0)
+                    tab.titleEdgeInsets = UIEdgeInsetsMake(spacing, -imageSize.width, -imageSize.height + spacing, 0)
                     tab.contentEdgeInsets = UIEdgeInsetsZero
                     tab.contentHorizontalAlignment = .Center
                     tab.contentVerticalAlignment = .Center
@@ -405,9 +404,15 @@ public class XMSegmentedControl: UIView {
         }
     }
     
-    /// Scales an Image to the size provided. It takes into account alpha. And it uses the screen's scale to resize.
-    private func resizeImage(image:UIImage) -> UIImage {
+    /// Scales an image if it's over the maximum size of `frame height / 2`. It takes into account alpha. And it uses the screen's scale to resize.
+    private func resizeImage(image: UIImage) -> UIImage {
         let maxSize = CGSize(width: frame.height / 2, height: frame.height / 2)
+
+        // If the original image is within the maximum size limit, just return immediately without manual scaling
+        if image.size.width <= maxSize.width && image.size.height <= maxSize.height {
+            return image
+        }
+
         let ratio = image.size.width / image.size.height
         let size = CGSize(width: maxSize.width*ratio, height: maxSize.height)
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
