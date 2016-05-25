@@ -7,7 +7,7 @@
 ## Overview
 XMSegmentedControl is a customizable segmented control. It allows using Text, Icons, or a combination of Icons and Text as the segments.
 
-![Screenshot](http://zippy.gfycat.com/SlimZestyGermanspitz.gif)
+![Screenshot](https://thumbs.gfycat.com/BelovedWellinformedAustralianshelduck-size_restricted.gif)
 
 ## Requirements
 * iOS 8+
@@ -69,8 +69,8 @@ self.view.addSubview(segmentedControl4)
 
 ![IconOnly](https://dl.dropboxusercontent.com/u/72507896/XMSegmentedControlScreenshots/icononly.png)
 
-### Icon + Text Segmented Control
-The example below creates an Icon + Text segmented control.
+### Horizontal Icon + Text Segmented Control
+The example below creates a horizontal Icon + Text segmented control.
 ``` Swift
 let backgroundColor = UIColor(red: 205/255, green: 74/255, blue: 1/255, alpha: 1)
 let highlightColor = UIColor(red: 226/255, green: 114/255, blue: 31/255, alpha: 1)
@@ -90,6 +90,27 @@ self.view.addSubview(segmentedControl2)
 ```
 
 ![IconText](https://dl.dropboxusercontent.com/u/72507896/XMSegmentedControlScreenshots/texticon.tiff)
+
+### Vertical Icon + Text Segmented Control
+The example below creates a vertical Icon + Text segmented control.
+``` Swift
+let backgroundColor8 = UIColor(red: 160/255, green: 74/255, blue: 1/255, alpha: 1)
+let highlightColor8 = UIColor(red: 181/255, green: 114/255, blue: 31/255, alpha: 1)
+
+let titles8 = ["Hello", "World", "Eight"]
+let icons = [UIImage(named: "icon1")!, UIImage(named: "icon2")!, UIImage(named: "icon3")!]
+        
+let segmentedControl8 = XMSegmentedControl(frame: CGRect(x: 0, y: 164, width: self.view.frame.width, height: 54), verticalSegmentContent: (titles8, icons), selectedItemHighlightStyle: XMSelectedItemHighlightStyle.BottomEdge)
+
+segmentedControl8.backgroundColor = backgroundColor8
+segmentedControl8.highlightColor = highlightColor8
+segmentedControl8.tint = UIColor.whiteColor()
+segmentedControl8.highlightTint = UIColor.blackColor()
+
+self.view.addSubview(segmentedControl8)
+```
+
+![IconText](https://photos-4.dropbox.com/t/2/AACs3rwA39Dwqj3il4ZOwzlaRL2z1uzBINv9ku3EikaQhA/12/72507896/jpeg/32x32/1/_/1/2/hybridverticaltexticon.tiff/ENH6pTgY2AQgBygH/ZCZnDBVNrm_J3WD3CnlbxWl_8Z-nM-kKusGJ44nhQ1M?size=2048x1536&size_mode=3)
 
 For more examples see the Example Project provided.
 
