@@ -41,6 +41,18 @@ public enum XMContentType {
     case HybridVertical
 }
 
+/**
+ Content distribution for the segmented control
+ - Fixed: The segmented control item has a fixed width at `totalWidth / 6`, where 6 is maximum number of segment items.
+ - HalfFixed: The segmented control item has a width equal to `totalWidth / 6`, if number of segment items > 2, and `totalWidth / 4` otherwise.
+ - Flexible: The segmented control item has a width equal to `totalWidth / segmentCount`
+ */
+public enum XMSegmentItemWidthDistribution {
+    case Fixed
+    case HalfFixed
+    case Flexible
+}
+
 @IBDesignable
 public class XMSegmentedControl: UIView {
 
@@ -155,6 +167,9 @@ public class XMSegmentedControl: UIView {
     
     /// Sets the segmented control content type to `Text` or `Icon`
     public var contentType: XMContentType = .Text
+
+    /// Sets the segmented control item width distribution to `Fixed`, `HalfFixed` or `Flexible`
+    public var itemWidthDistribution:XMSegmentItemWidthDistribution = .Flexible
     
     /// Initializes and returns a newly allocated XMSegmentedControl object with the specified frame rectangle. It sets the segments of the control from the given `segmentTitle` array and the highlight style for the selected item.
     public init (frame: CGRect, segmentTitle: [String], selectedItemHighlightStyle: XMSelectedItemHighlightStyle) {
@@ -252,7 +267,6 @@ public class XMSegmentedControl: UIView {
                     tab.titleLabel?.font = font
                     tab.imageView?.contentMode = .ScaleAspectFit
                     tab.tintColor = i == selectedSegment ? highlightTint : tint
-
                 case .HybridVertical:
                     let insetAmount: CGFloat = 8 / 2.0
                     let bottomTitleInset: CGFloat = 20
@@ -295,6 +309,30 @@ public class XMSegmentedControl: UIView {
         (subviews as [UIView]).forEach { $0.removeFromSuperview() }
         let totalWidth = frame.width
 
+        func startingPositionAndWidth(totalWidth: CGFloat, distribution: XMSegmentItemWidthDistribution, segmentCount: Int, selectedIndex: Int) -> (startingPosition: CGFloat, sectionWidth: CGFloat) {
+
+            switch distribution {
+            case .Fixed:
+                let width = totalWidth / 6
+                let availableSpace = totalWidth - (width * CGFloat(segmentCount))
+                let position = (totalWidth - availableSpace) / 2
+                return (position, width)
+            case .HalfFixed:
+                var width = totalWidth / 4
+                if segmentCount > 2 {
+                    width = totalWidth / 6
+                }
+
+                let availableSpace = totalWidth - (width * CGFloat(segmentCount))
+                let position = (totalWidth - availableSpace) / 2
+                return (position, width)
+            case .Flexible:
+                let width = totalWidth / CGFloat(segmentCount)
+                let position = CGFloat(selectedIndex) * width
+                return (position, width)
+            }
+        }
+
         if contentType == .Text {
             guard segmentTitle.count > 0 else {
                 print("segment titles (segmentTitle) are not set")
@@ -306,17 +344,20 @@ public class XMSegmentedControl: UIView {
             addHighlightView(startingPosition: CGFloat(selectedSegment) * sectionWidth, width: sectionWidth)
             addSegments(startingPosition: 0, sections: tabBarSections, width: sectionWidth, height: frame.height)
         } else if contentType == .Icon {
-            let tabBarSections = segmentIcon.count
-            let sectionWidth = totalWidth / 6
-            let availableSpace = totalWidth - (sectionWidth * CGFloat(6 - tabBarSections))
-            let startingXPosition = (totalWidth - availableSpace) / 2
-            addHighlightView(startingPosition: startingXPosition + (sectionWidth * CGFloat(selectedSegment)), width: sectionWidth)
-            addSegments(startingPosition: startingXPosition, sections: tabBarSections, width: sectionWidth, height: frame.height)
-        } else { // Hybrid
-            let tabBarSections = segmentContent.text.count
-            let sectionWidth = totalWidth / CGFloat(tabBarSections)
-            addHighlightView(startingPosition: CGFloat(selectedSegment) * sectionWidth, width: sectionWidth)
-            addSegments(startingPosition: 0, sections: tabBarSections, width: sectionWidth, height: frame.height)
+            let tabBarSections:Int = segmentIcon.count
+            let positionWidth = startingPositionAndWidth(totalWidth, distribution: itemWidthDistribution, segmentCount: tabBarSections, selectedIndex: selectedSegment)
+            addHighlightView(startingPosition: positionWidth.startingPosition, width: positionWidth.sectionWidth)
+            addSegments(startingPosition: positionWidth.startingPosition, sections: tabBarSections, width: positionWidth.sectionWidth, height: self.frame.height)
+        } else if contentType == .Hybrid {
+            let tabBarSections:Int = segmentContent.text.count
+            let positionWidth = startingPositionAndWidth(totalWidth, distribution: itemWidthDistribution, segmentCount: tabBarSections, selectedIndex: selectedSegment)
+            addHighlightView(startingPosition: positionWidth.startingPosition, width: positionWidth.sectionWidth)
+            addSegments(startingPosition: 0, sections: tabBarSections, width: positionWidth.sectionWidth, height: self.frame.height)
+        } else if contentType == .HybridVertical {
+            let tabBarSections:Int = segmentContent.text.count
+            let positionWidth = startingPositionAndWidth(totalWidth, distribution: itemWidthDistribution, segmentCount: tabBarSections, selectedIndex: selectedSegment)
+            addHighlightView(startingPosition: positionWidth.startingPosition, width: positionWidth.sectionWidth)
+            addSegments(startingPosition: positionWidth.startingPosition, sections: tabBarSections, width: positionWidth.sectionWidth, height: self.frame.height)
         }
     }
     
