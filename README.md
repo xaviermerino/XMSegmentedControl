@@ -110,7 +110,7 @@ segmentedControl8.highlightTint = UIColor.blackColor()
 self.view.addSubview(segmentedControl8)
 ```
 
-![IconText](https://photos-4.dropbox.com/t/2/AACs3rwA39Dwqj3il4ZOwzlaRL2z1uzBINv9ku3EikaQhA/12/72507896/jpeg/32x32/1/_/1/2/hybridverticaltexticon.tiff/ENH6pTgY2AQgBygH/ZCZnDBVNrm_J3WD3CnlbxWl_8Z-nM-kKusGJ44nhQ1M?size=2048x1536&size_mode=3)
+![IconText](https://dl.dropboxusercontent.com/u/72507896/XMSegmentedControlScreenshots/hybridverticaltexticon.tiff?raw=1)
 
 For more examples see the Example Project provided.
 
