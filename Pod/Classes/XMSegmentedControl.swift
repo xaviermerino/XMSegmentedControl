@@ -32,11 +32,13 @@ public enum XMSelectedItemHighlightStyle {
  - Text: The segmented control displays only text.
  - Icon: The segmented control displays only icons/images.
  - Hybrid: The segmented control displays icons and text.
+ - HybridVertical: The segmented control displays icons and text in vertical arrangement.
  */
 public enum XMContentType {
     case Text
     case Icon
     case Hybrid
+    case HybridVertical
 }
 
 @IBDesignable
@@ -125,6 +127,18 @@ public class XMSegmentedControl: UIView {
             self.update()
         }
     }
+
+    /**
+     Sets the segmented control content type to `HybridVertical` (i.e. displaying icons and text in vertical arrangement) and uses the content of the tuple to create the segments.
+     - Note: Only six elements will be displayed.
+     */
+
+    public func setupVerticalSegmentContent(content: (text: [String], icon: [UIImage])) {
+        segmentContent = content
+
+        contentType = .HybridVertical
+        self.update()
+    }
     
     
     /// The segment index of the selected item.
@@ -161,6 +175,16 @@ public class XMSegmentedControl: UIView {
         super.init (frame: frame)
 
         self.commonInit(segmentContent, highlightStyle: selectedItemHighlightStyle)
+    }
+
+    /**
+     Initializes and returns a newly allocated XMSegmentedControl object with the specified frame rectangle. It sets the segments of the control from the given `verticalSegmentContent` tuple and the highlight style for the selected item. Notice that the tuple consists of an array containing the titles and another array containing the icons. The two arrays must be the same size.
+
+     The `contentType` is `HybridVertical`
+    */
+    public convenience init (frame: CGRect, verticalSegmentContent: ([String], [UIImage]), selectedItemHighlightStyle:XMSelectedItemHighlightStyle) {
+        self.init (frame: frame, segmentContent: verticalSegmentContent, selectedItemHighlightStyle: selectedItemHighlightStyle)
+        setupVerticalSegmentContent(verticalSegmentContent)
     }
     
     /// Common initializer.
@@ -228,7 +252,24 @@ public class XMSegmentedControl: UIView {
                     tab.titleLabel?.font = font
                     tab.imageView?.contentMode = .ScaleAspectFit
                     tab.tintColor = i == selectedSegment ? highlightTint : tint
-                    
+
+                case .HybridVertical:
+                    let insetAmount: CGFloat = 8 / 2.0
+                    let bottomTitleInset: CGFloat = 20
+
+                    let image: UIImage = segmentContent.icon[i]
+                    let imageSize = image.size
+                    let horizontalInset = (width - imageSize.width)/2
+
+                    tab.imageEdgeInsets = UIEdgeInsetsMake(insetAmount*2, horizontalInset, height - imageSize.height + insetAmount, horizontalInset)
+                    tab.titleEdgeInsets = UIEdgeInsetsMake(height - bottomTitleInset, -imageSize.width / 2, insetAmount*2, imageSize.width / 2)
+                    tab.contentEdgeInsets = UIEdgeInsetsMake(0, insetAmount, 0, insetAmount)
+                    tab.contentHorizontalAlignment = .Center
+                    tab.setTitle(segmentContent.text[i], forState: .Normal)
+                    tab.setImage(image, forState: .Normal)
+                    tab.titleLabel?.font = UIFont(name: font.fontName, size: font.pointSize / 2.0)
+                    tab.imageView?.contentMode = .ScaleAspectFit
+                    tab.tintColor = i == selectedSegment ? highlightTint : tint
                 }
                 
                 tab.tag = i
@@ -292,7 +333,7 @@ public class XMSegmentedControl: UIView {
             self.highlightView.frame.origin = newPosition
             
             switch(self.contentType) {
-            case .Icon, .Hybrid:
+            case .Icon, .Hybrid, .HybridVertical:
                 ((self.subviews.filter(isUIButton)) as! [UIButton]).forEach { $0.tintColor = self.tint }
                 sender.tintColor = self.highlightTint
             case .Text:
@@ -317,8 +358,10 @@ public class XMSegmentedControl: UIView {
     }
     
     /// Scales an Image to the size provided. It takes into account alpha. And it uses the screen's scale to resize.
-    private func resizeImage(image: UIImage) -> UIImage {
-        let size = CGSize(width: 20, height: 20)
+    private func resizeImage(image:UIImage) -> UIImage {
+        let maxSize = CGSize(width: frame.height / 2, height: frame.height / 2)
+        let ratio = image.size.width / image.size.height
+        let size = CGSize(width: maxSize.width*ratio, height: maxSize.height)
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
         image.drawInRect(CGRect(origin: CGPointZero, size: size))
         let scaledImage = UIGraphicsGetImageFromCurrentImageContext()

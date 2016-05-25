@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2500FAB01C0A59C400984852 /* CHANGELOG.md in Sources */ = {isa = PBXBuildFile; fileRef = 2500FAAF1C0A59C400984852 /* CHANGELOG.md */; };
 		3A789FCA18F05D27B01AB6A7 /* Pods_XMSegmentedControl_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19ABD2CEA41BD1DC63B4036A /* Pods_XMSegmentedControl_Example.framework */; };
 		581D5851FC91AE2B2BF2A541 /* Pods_XMSegmentedControl_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8799F6D568A188459790D9F3 /* Pods_XMSegmentedControl_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
@@ -363,7 +362,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
-				2500FAB01C0A59C400984852 /* CHANGELOG.md in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -521,10 +519,6 @@
 			baseConfigurationReference = 2FC7E6F5C75A0B71C796A9A5 /* Pods-XMSegmentedControl_Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -542,10 +536,6 @@
 			baseConfigurationReference = EF8C28696452355C21BF5855 /* Pods-XMSegmentedControl_Tests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
 				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";

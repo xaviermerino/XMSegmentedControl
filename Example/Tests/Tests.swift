@@ -2,28 +2,55 @@ import UIKit
 import XCTest
 import XMSegmentedControl
 
+@testable
+import XMSegmentedControl_Example
+
 class Tests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+    func testContentTypeHybrid() {
+        let titles = ["Hello", "World", "Two"]
+        let icons = [UIImage(named: "icon1")!, UIImage(named: "icon2")!, UIImage(named: "icon3")!]
+
+        let frame = CGRect(x: 0, y: 114, width: 375, height: 44)
+        let segmentedControl = XMSegmentedControl(frame: frame, segmentContent: (titles, icons), selectedItemHighlightStyle: XMSelectedItemHighlightStyle.BottomEdge)
+        XCTAssertEqual(titles, segmentedControl.segmentContent.text)
+        XCTAssertEqual(icons.count, segmentedControl.segmentContent.icon.count)
+        XCTAssertEqual(segmentedControl.contentType, XMContentType.Hybrid)
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
+
+    func testContentTypeHybridVertical() {
+        let titles = ["Hello", "World", "Two"]
+        let icons = [UIImage(named: "icon1")!, UIImage(named: "icon2")!, UIImage(named: "icon3")!]
+
+        let frame = CGRect(x: 0, y: 114, width: 375, height: 44)
+        let segmentedControl = XMSegmentedControl(frame: frame, verticalSegmentContent: (titles, icons), selectedItemHighlightStyle: XMSelectedItemHighlightStyle.BottomEdge)
+        XCTAssertEqual(titles, segmentedControl.segmentContent.text)
+        XCTAssertEqual(icons.count, segmentedControl.segmentContent.icon.count)
+        XCTAssertEqual(segmentedControl.contentType, XMContentType.HybridVertical)
     }
-    
+
+    func testContentTypeText() {
+        let titles = ["Hello", "World", "Two"]
+
+        let segmentedControl = XMSegmentedControl(frame: CGRect(x: 0, y: 224, width: 375, height: 44), segmentTitle: titles, selectedItemHighlightStyle: XMSelectedItemHighlightStyle.TopEdge)
+        XCTAssertEqual(titles, segmentedControl.segmentTitle)
+        XCTAssertEqual(segmentedControl.contentType, XMContentType.Text)
+    }
+
+    func testContentTypeIcon() {
+        let icons: [UIImage] = [UIImage(named: "icon1")!, UIImage(named: "icon2")!, UIImage(named: "icon3")!, UIImage(named: "icon4")!, UIImage(named: "icon5")!, UIImage(named: "icon6")!]
+
+        let segmentedControl = XMSegmentedControl(frame: CGRect(x: 0, y: 274, width: 375, height: 44), segmentIcon: icons, selectedItemHighlightStyle: XMSelectedItemHighlightStyle.Background)
+        XCTAssertEqual(icons, segmentedControl.segmentIcon)
+        XCTAssertEqual(segmentedControl.contentType, XMContentType.Icon)
+    }
+
 }
