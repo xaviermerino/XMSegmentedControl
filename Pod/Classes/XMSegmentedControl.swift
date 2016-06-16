@@ -151,11 +151,41 @@ public class XMSegmentedControl: UIView {
         contentType = .HybridVertical
         self.update()
     }
-    
-    
-    /// The segment index of the selected item.
-    public var selectedSegment: Int = 0
-    
+
+
+    /// The segment index of the selected item. When set it animates the current highlight to the button with index = selectedSegment.
+    public var selectedSegment: Int = 0 {
+        didSet {
+            func isUIButton(view: UIView) -> Bool {
+                return view is UIButton ? true : false
+            }
+            UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+                switch(self.contentType) {
+                case .Icon, .Hybrid, .HybridVertical:
+                    ((self.subviews.filter(isUIButton)) as! [UIButton]).forEach {
+                        if $0.tag == self.selectedSegment {
+                            $0.tintColor = self.highlightTint
+                            self.highlightView.frame.origin.x = $0.frame.origin.x
+                        } else {
+                            $0.tintColor = self.tint
+                        }
+                    }
+                case .Text:
+                    ((self.subviews.filter(isUIButton)) as! [UIButton]).forEach {
+                        if $0.tag == self.selectedSegment {
+                            $0.setTitleColor(self.highlightTint, forState: .Normal)
+                            self.highlightView.frame.origin.x = $0.frame.origin.x
+                        } else {
+                            $0.setTitleColor(self.tint, forState: .Normal)
+                        }
+                    }
+                }
+
+                }, completion:nil)
+        }
+
+    }
+
     /**
      Sets the font for the text displayed in the segmented control if `contentType` is `Text`
      - Note: Changes only take place if `contentType` is `Text`
@@ -363,27 +393,6 @@ public class XMSegmentedControl: UIView {
     
     /// Called whenever a segment is pressed. Sends the information to the delegate.
     @objc private func segmentPressed(sender: UIButton) {
-        func isUIButton(view: UIView) -> Bool {
-            return view is UIButton ? true : false
-        }
-
-        let xPosition = sender.frame.origin.x
-        let newPosition = CGPoint(x: xPosition, y: highlightView.frame.origin.y)
-        
-        UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: UIViewAnimationOptions.CurveEaseOut, animations: {
-            self.highlightView.frame.origin = newPosition
-            
-            switch(self.contentType) {
-            case .Icon, .Hybrid, .HybridVertical:
-                ((self.subviews.filter(isUIButton)) as! [UIButton]).forEach { $0.tintColor = self.tint }
-                sender.tintColor = self.highlightTint
-            case .Text:
-                ((self.subviews.filter(isUIButton)) as! [UIButton]).forEach { $0.setTitleColor(self.tint, forState: .Normal) }
-                sender.setTitleColor(self.highlightTint, forState: .Normal)
-            }
-            
-            }, completion: nil)
-        
         selectedSegment = sender.tag
         delegate?.xmSegmentedControl(self, selectedSegment: selectedSegment)
     }
