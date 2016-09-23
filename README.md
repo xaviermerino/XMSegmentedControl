@@ -41,14 +41,15 @@ Alternatively, create a XMSegmentedControl from code.
 ### Text Only Segmented Control
 The example below creates a text-only segmented control.
 ```Swift
-let segmentedControl3 = XMSegmentedControl(frame: CGRect(x: 0, y: 164, width: self.view.frame.width, height: 44), segmentTitle: ["Hello", "World", "Three"], selectedItemHighlightStyle: XMSelectedItemHighlightStyle.TopEdge)
+let segmentedControl3 = XMSegmentedControl(frame: CGRect(x: 0, y: 224, width: self.view.frame.width, height: 44), segmentTitle: ["Hello", "World", "Three"], selectedItemHighlightStyle: XMSelectedItemHighlightStyle.topEdge)
 
 segmentedControl3.backgroundColor = UIColor(red: 22/255, green: 150/255, blue: 122/255, alpha: 1)
 segmentedControl3.highlightColor = UIColor(red: 25/255, green: 180/255, blue: 145/255, alpha: 1)
-segmentedControl3.tint = UIColor.whiteColor()
-segmentedControl3.highlightTint = UIColor.blackColor()
+segmentedControl3.tint = UIColor.white
+segmentedControl3.highlightTint = UIColor.black
 
 self.view.addSubview(segmentedControl3)
+
 ```
 
 ![TextOnly](https://dl.dropboxusercontent.com/u/72507896/XMSegmentedControlScreenshots/textonly.png)
@@ -58,11 +59,11 @@ The example below creates an icon-only segmented control.
 ``` Swift
 let icons1:[UIImage] = [UIImage(named: "icon1")!, UIImage(named: "icon2")!, UIImage(named: "icon3")!, UIImage(named: "icon4")!, UIImage(named: "icon5")!, UIImage(named: "icon6")!]
 
-let segmentedControl4 = XMSegmentedControl(frame: CGRect(x: 0, y: 214, width: self.view.frame.width, height: 44), segmentIcon: icons1, selectedItemHighlightStyle: XMSelectedItemHighlightStyle.Background)
+let segmentedControl4 = XMSegmentedControl(frame: CGRect(x: 0, y: 274, width: self.view.frame.width, height: 44), segmentIcon: icons1, selectedItemHighlightStyle: XMSelectedItemHighlightStyle.background)
 
 segmentedControl4.backgroundColor = UIColor(red: 128/255, green: 59/255, blue: 159/255, alpha: 1)
 segmentedControl4.highlightColor = UIColor(red: 144/255, green: 79/255, blue: 173/255, alpha: 1)
-segmentedControl4.tint = UIColor.whiteColor()
+segmentedControl4.tint = UIColor.white
 
 self.view.addSubview(segmentedControl4)
 ```
@@ -79,12 +80,12 @@ let titles = ["Hello", "World", "Two"]
 let icons = [UIImage(named: "icon1")!, UIImage(named: "icon2")!, UIImage(named: "icon3")!]
 let frame = CGRect(x: 0, y: 114, width: self.view.frame.width, height: 44)
 
-let segmentedControl2 = XMSegmentedControl(frame: frame, segmentContent: (titles, icons), selectedItemHighlightStyle: XMSelectedItemHighlightStyle.BottomEdge)
+let segmentedControl2 = XMSegmentedControl(frame: frame, segmentContent: (titles, icons), selectedItemHighlightStyle: XMSelectedItemHighlightStyle.bottomEdge)
 
 segmentedControl2.backgroundColor = backgroundColor
 segmentedControl2.highlightColor = highlightColor
-segmentedControl2.tint = UIColor.whiteColor()
-segmentedControl2.highlightTint = UIColor.blackColor()
+segmentedControl2.tint = UIColor.white
+segmentedControl2.highlightTint = UIColor.black
 
 self.view.addSubview(segmentedControl2)
 ```
@@ -100,12 +101,12 @@ let highlightColor8 = UIColor(red: 181/255, green: 114/255, blue: 31/255, alpha:
 let titles8 = ["Hello", "World", "Eight"]
 let icons = [UIImage(named: "icon1")!, UIImage(named: "icon2")!, UIImage(named: "icon3")!]
         
-let segmentedControl8 = XMSegmentedControl(frame: CGRect(x: 0, y: 164, width: self.view.frame.width, height: 54), verticalSegmentContent: (titles8, icons), selectedItemHighlightStyle: XMSelectedItemHighlightStyle.BottomEdge)
+let segmentedControl8 = XMSegmentedControl(frame: CGRect(x: 0, y: 164, width: self.view.frame.width, height: 54), verticalSegmentContent: (titles8, icons), selectedItemHighlightStyle: XMSelectedItemHighlightStyle.bottomEdge)
 
 segmentedControl8.backgroundColor = backgroundColor8
 segmentedControl8.highlightColor = highlightColor8
-segmentedControl8.tint = UIColor.whiteColor()
-segmentedControl8.highlightTint = UIColor.blackColor()
+segmentedControl8.tint = UIColor.white
+segmentedControl8.highlightTint = UIColor.black
 
 self.view.addSubview(segmentedControl8)
 ```
