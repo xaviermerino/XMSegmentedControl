@@ -1,12 +1,11 @@
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
-target 'XMSegmentedControl_Example', :exclusive => true do
+target 'XMSegmentedControl_Example' do
   pod "XMSegmentedControl", :path => "../"
 end
 
-target 'XMSegmentedControl_Tests', :exclusive => true do
+target 'XMSegmentedControl_Tests' do
   pod "XMSegmentedControl", :path => "../"
 
-  
 end
