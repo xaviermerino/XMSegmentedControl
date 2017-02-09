@@ -304,22 +304,22 @@ open class XMSegmentedControl: UIView {
                     let text: String = segmentContent.text[i]
 
                     let halfSizeFont = UIFont(name: font.fontName, size: font.pointSize / 2.0)
-                    let textSize = NSString(string: text).sizeWithAttributes([NSFontAttributeName: halfSizeFont!])
+                    let textSize = NSString(string: text).size(attributes: [NSFontAttributeName: halfSizeFont])
 
                     let spacing: CGFloat = 12
                     let imageHorizontalInset: CGFloat = (width - imageSize.width)/2
 
                     tab.imageEdgeInsets = UIEdgeInsetsMake(spacing, imageHorizontalInset, spacing + textSize.height + edgeHighlightHeight, imageHorizontalInset)
                     tab.titleEdgeInsets = UIEdgeInsetsMake(spacing, -imageSize.width, -imageSize.height + spacing, 0)
-                    tab.contentEdgeInsets = UIEdgeInsetsZero
-                    tab.contentHorizontalAlignment = .Center
-                    tab.contentVerticalAlignment = .Center
-                    tab.setTitle(text, forState: .Normal)
-                    tab.setImage(image, forState: .Normal)
+                    tab.contentEdgeInsets = UIEdgeInsets.zero
+                    tab.contentHorizontalAlignment = .center
+                    tab.contentVerticalAlignment = .center
+                    tab.setTitle(text, for: .normal)
+                    tab.setImage(image, for: .normal)
                     tab.titleLabel?.font = halfSizeFont
-                    tab.titleLabel?.textAlignment = .Center
+                    tab.titleLabel?.textAlignment = .center
                     tab.titleLabel?.numberOfLines = 0
-                    tab.imageView?.contentMode = .ScaleAspectFit
+                    tab.imageView?.contentMode = .scaleAspectFit
                     tab.tintColor = i == selectedSegment ? highlightTint : tint
                 }
                 
