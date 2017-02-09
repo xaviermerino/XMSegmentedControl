@@ -272,8 +272,7 @@ open class XMSegmentedControl: UIView {
     /// Forces the segmented control to reload.
     open func update() {
         func addSegments(startingPosition starting: CGFloat, sections: Int, width: CGFloat, height: CGFloat) {
-
-            for i in 0 ..< sections {
+            for i in 0..<sections {
                 let frame = CGRect(x: starting + (CGFloat(i) * width), y: 0, width: width, height: height)
                 let tab = UIButton(type: UIButtonType.system)
                 tab.frame = frame
@@ -300,20 +299,26 @@ open class XMSegmentedControl: UIView {
                     tab.imageView?.contentMode = .scaleAspectFit
                     tab.tintColor = i == selectedSegment ? highlightTint : tint
                 case .hybridVertical:
-                    let insetAmount: CGFloat = 8 / 2.0
-                    let bottomTitleInset: CGFloat = 20
-
                     let image: UIImage = segmentContent.icon[i]
                     let imageSize = image.size
-                    let horizontalInset = (width - imageSize.width)/2
+                    let text: String = segmentContent.text[i]
 
-                    tab.imageEdgeInsets = UIEdgeInsetsMake(insetAmount*2, horizontalInset, height - imageSize.height + insetAmount, horizontalInset)
-                    tab.titleEdgeInsets = UIEdgeInsetsMake(height - bottomTitleInset, -imageSize.width / 2, insetAmount*2, imageSize.width / 2)
-                    tab.contentEdgeInsets = UIEdgeInsetsMake(0, insetAmount, 0, insetAmount)
+                    let halfSizeFont = UIFont(name: font.fontName, size: font.pointSize / 2.0)
+                    let textSize = NSString(string: text).size(attributes: [NSFontAttributeName: halfSizeFont])
+
+                    let spacing: CGFloat = 12
+                    let imageHorizontalInset: CGFloat = (width - imageSize.width)/2
+
+                    tab.imageEdgeInsets = UIEdgeInsetsMake(spacing, imageHorizontalInset, spacing + textSize.height + edgeHighlightHeight, imageHorizontalInset)
+                    tab.titleEdgeInsets = UIEdgeInsetsMake(spacing, -imageSize.width, -imageSize.height + spacing, 0)
+                    tab.contentEdgeInsets = UIEdgeInsets.zero
                     tab.contentHorizontalAlignment = .center
-                    tab.setTitle(segmentContent.text[i], for: UIControlState())
-                    tab.setImage(image, for: UIControlState())
-                    tab.titleLabel?.font = UIFont(name: font.fontName, size: font.pointSize / 2.0)
+                    tab.contentVerticalAlignment = .center
+                    tab.setTitle(text, for: .normal)
+                    tab.setImage(image, for: .normal)
+                    tab.titleLabel?.font = halfSizeFont
+                    tab.titleLabel?.textAlignment = .center
+                    tab.titleLabel?.numberOfLines = 0
                     tab.imageView?.contentMode = .scaleAspectFit
                     tab.tintColor = i == selectedSegment ? highlightTint : tint
                 }
@@ -409,9 +414,15 @@ open class XMSegmentedControl: UIView {
         }
     }
     
-    /// Scales an Image to the size provided. It takes into account alpha. And it uses the screen's scale to resize.
+    /// Scales an image if it's over the maximum size of `frame height / 2`. It takes into account alpha. And it uses the screen's scale to resize.
     fileprivate func resizeImage(_ image:UIImage) -> UIImage {
         let maxSize = CGSize(width: frame.height / 2, height: frame.height / 2)
+
+        // If the original image is within the maximum size limit, just return immediately without manual scaling
+        if image.size.width <= maxSize.width && image.size.height <= maxSize.height {
+            return image
+        }
+
         let ratio = image.size.width / image.size.height
         let size = CGSize(width: maxSize.width*ratio, height: maxSize.height)
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
