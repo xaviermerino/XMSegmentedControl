@@ -322,7 +322,7 @@ open class XMSegmentedControl: UIView {
                     tab.imageView?.contentMode = .scaleAspectFit
                     tab.tintColor = i == selectedSegment ? highlightTint : tint
                 }
-                
+
                 tab.tag = i
                 tab.addTarget(self, action: #selector(XMSegmentedControl.segmentPressed(_:)), for: .touchUpInside)
                 self.addSubview(tab)
@@ -346,8 +346,7 @@ open class XMSegmentedControl: UIView {
         (subviews as [UIView]).forEach { $0.removeFromSuperview() }
         let totalWidth = frame.width
 
-        func startingPositionAndWidth(_ totalWidth: CGFloat, distribution: XMSegmentItemWidthDistribution, segmentCount: Int, selectedIndex: Int) -> (startingPosition: CGFloat, sectionWidth: CGFloat) {
-
+        func startingPositionAndWidth(_ totalWidth: CGFloat, distribution: XMSegmentItemWidthDistribution, segmentCount: Int) -> (startingPosition: CGFloat, sectionWidth: CGFloat) {
             switch distribution {
             case .fixed:
                 let width = totalWidth / 6
@@ -365,8 +364,7 @@ open class XMSegmentedControl: UIView {
                 return (position, width)
             case .flexible:
                 let width = totalWidth / CGFloat(segmentCount)
-                let position = CGFloat(selectedIndex) * width
-                return (position, width)
+                return (0, width)
             }
         }
 
@@ -382,18 +380,18 @@ open class XMSegmentedControl: UIView {
             addSegments(startingPosition: 0, sections: tabBarSections, width: sectionWidth, height: frame.height)
         } else if contentType == .icon {
             let tabBarSections:Int = segmentIcon.count
-            let positionWidth = startingPositionAndWidth(totalWidth, distribution: itemWidthDistribution, segmentCount: tabBarSections, selectedIndex: selectedSegment)
-            addHighlightView(startingPosition: positionWidth.startingPosition, width: positionWidth.sectionWidth)
+            let positionWidth = startingPositionAndWidth(totalWidth, distribution: itemWidthDistribution, segmentCount: tabBarSections)
+            addHighlightView(startingPosition: CGFloat(selectedSegment) * positionWidth.sectionWidth, width: positionWidth.sectionWidth)
             addSegments(startingPosition: positionWidth.startingPosition, sections: tabBarSections, width: positionWidth.sectionWidth, height: self.frame.height)
         } else if contentType == .hybrid {
             let tabBarSections:Int = segmentContent.text.count
-            let positionWidth = startingPositionAndWidth(totalWidth, distribution: itemWidthDistribution, segmentCount: tabBarSections, selectedIndex: selectedSegment)
-            addHighlightView(startingPosition: positionWidth.startingPosition, width: positionWidth.sectionWidth)
+            let positionWidth = startingPositionAndWidth(totalWidth, distribution: itemWidthDistribution, segmentCount: tabBarSections)
+            addHighlightView(startingPosition: CGFloat(selectedSegment) * positionWidth.sectionWidth, width: positionWidth.sectionWidth)
             addSegments(startingPosition: 0, sections: tabBarSections, width: positionWidth.sectionWidth, height: self.frame.height)
         } else if contentType == .hybridVertical {
             let tabBarSections:Int = segmentContent.text.count
-            let positionWidth = startingPositionAndWidth(totalWidth, distribution: itemWidthDistribution, segmentCount: tabBarSections, selectedIndex: selectedSegment)
-            addHighlightView(startingPosition: positionWidth.startingPosition, width: positionWidth.sectionWidth)
+            let positionWidth = startingPositionAndWidth(totalWidth, distribution: itemWidthDistribution, segmentCount: tabBarSections)
+            addHighlightView(startingPosition: CGFloat(selectedSegment) * positionWidth.sectionWidth, width: positionWidth.sectionWidth)
             addSegments(startingPosition: positionWidth.startingPosition, sections: tabBarSections, width: positionWidth.sectionWidth, height: self.frame.height)
         }
     }
