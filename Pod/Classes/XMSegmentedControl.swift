@@ -11,7 +11,7 @@
 import UIKit
 
 ///The delegate of `XMSegmentedControl` must adopt `XMSegmentedControlDelegate` protocol. It allows retrieving information on which segment was tapped.
-public protocol XMSegmentedControlDelegate {
+public protocol XMSegmentedControlDelegate: class {
     /// Tells the delegate that a specific segment is now selected.
     func xmSegmentedControl(_ xmSegmentedControl: XMSegmentedControl, selectedSegment: Int)
 }
@@ -57,7 +57,7 @@ public enum XMSegmentItemWidthDistribution {
 @IBDesignable
 open class XMSegmentedControl: UIView {
 
-    open var delegate: XMSegmentedControlDelegate?
+    weak open var delegate: XMSegmentedControlDelegate?
     fileprivate var highlightView: UIView!
     
     /**
